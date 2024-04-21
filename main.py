@@ -12,9 +12,10 @@ PORT = "5000"
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:HareWare@2024@localhost/HareInteract'
 
-@app.before_request
-def create_tables():
+db.init_app(app)
+with app.app_context():
     db.create_all()
+
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
