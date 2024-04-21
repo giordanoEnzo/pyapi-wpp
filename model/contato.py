@@ -19,6 +19,7 @@ class Hico(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    @classmethod
     def listar_registros(self):
         return Hico.query.all()
 
