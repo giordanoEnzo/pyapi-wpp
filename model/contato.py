@@ -22,6 +22,7 @@ class Hico(db.Model):
     def listar_registros(self):
         return Hico.query.all()
 
+    @classmethod
     def pesquisar_registro(self, telefone):
         return Hico.query.filter_by(HICOFONE=telefone).first()
 
