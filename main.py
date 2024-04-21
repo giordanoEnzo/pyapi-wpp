@@ -10,7 +10,7 @@ GRAPH_API_TOKEN = "EAALU15sZAfHoBO64eEZC8rvlRtyD89vuxO9yKQ4nZAFj9dz1ZC8ZCot3aX9N
 PORT = "5000"
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:HareWare@2024@localhost/HareInteract'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:HareWare@2024@localhost/HareInteract?client_encoding=utf8'
 
 db.init_app(app)
 with app.app_context():
