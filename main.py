@@ -1,7 +1,7 @@
 import json
 from flask import Flask, request, jsonify
 import requests
-from flask_sqlalchemy import SQLAlchemy
+from utils.db import db
 import flow
 
 # Obtém variáveis de ambiente
@@ -11,8 +11,10 @@ PORT = "5000"
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:HareWare@2024@localhost/HareInteract'
-db = SQLAlchemy(app)
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
