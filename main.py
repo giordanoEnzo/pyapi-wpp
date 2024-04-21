@@ -15,6 +15,13 @@ db = SQLAlchemy(app)
 db.create_all()
 
 
+def createapp():
+    app = Flask(__name__)
+    with app.app_context():
+        db.create_all()
+
+    return app
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
     # Obtém os dados da mensagem recebida
@@ -62,4 +69,5 @@ def index():
 
 # Executa o aplicativo Flask
 if __name__ == "__main__":
+    createapp()
     app.run(port=int(PORT))
