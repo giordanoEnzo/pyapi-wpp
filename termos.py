@@ -1,0 +1,2 @@
+saudacoes = ["Olá", "olá", "Ola", "ola", "Oi", "oi", "Oii", "Oiii", "oii", "oiii", "E aí", "e aí", "Bom dia", "Bom diaa", "bom diaa", "bom dia",
+             "Boa tarde", "Boa tardee", "boa tarde", "boa tardee", "Boa noite", "Boa noitee", "boa noite", "Boa noitee"]
