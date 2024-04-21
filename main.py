@@ -3,7 +3,6 @@ from flask import Flask, request, jsonify
 import requests
 from utils.db import db
 import flow
-import model
 
 # Obtém variáveis de ambiente
 WEBHOOK_VERIFY_TOKEN = "zuck_seu_merda"
