@@ -7,7 +7,7 @@ class Hico(db.Model):
     HICONOME = db.Column(db.String)
     HICOFONE = db.Column(db.String)
     HICOMAIL = db.Column(db.String)
-    HICOCLIE = db.Column(db.Bool(default=False))
+    HICOCLIE = db.Column(db.Boolean, unique=False, default=False)
 
     def __init_(self, HICONOME, HICOFONE, HICOMAIL, HICOCLIE):
         self.HICONOME = HICONOME
