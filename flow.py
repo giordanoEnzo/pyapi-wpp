@@ -1,9 +1,10 @@
 import requests
-from model import contato
+from model import contato, conversaStatus
 import termos
 from model.contato import Hico
 from model.conversaStatus import Hist
-import time
+from datetime import datetime
+from utils.validacoes import caracteres_numericos, caracteres_estranhos
 
 
 def identifica_resposta(conteudo_mensagem, telefone):
@@ -16,13 +17,18 @@ def identifica_resposta(conteudo_mensagem, telefone):
             return (f"Olá {registro_contato.HICONOME}!\n"
                     f"Seja bem-vindo novamente a central de atendimento da HareWare!")
         else:
-            Hist.gravar_status(telefone, "NM3", time.strftime("%H:%M"))
+            novo_status = Hist(telefone, "NM3", datetime.now())
+            Hist.gravar_status(novo_status)
             return ("Olá! Seja bem-vindo a central de atendimento da HareWare!\n"
                     "Por favor digite o seu nome...")
     elif registro_status == "NM3":
-        Hico.gravar_registro(conteudo_mensagem)
-        registro = Hico.pesquisar_registro(telefone)
-        return f"Prazer em te conhecer {registro.HICONOME}!\n"
+        if caracteres_estranhos(conteudo_mensagem) or caracteres_numericos(conteudo_mensagem):
+            return "Por favor, insira um nome válido!"
+        novo_contato = Hico(conteudo_mensagem, telefone, None, False)
+        Hico.gravar_registro(novo_contato)
+        registro_contato = Hico.pesquisar_registro(telefone)
+        Hist.deletar_status(registro_status)
+        return f"Prazer em te conhecer {registro_contato.HICONOME}!\n"
     else:
         return ("Não entendi!")
 
