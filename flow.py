@@ -24,7 +24,7 @@ def identifica_resposta(conteudo_mensagem, telefone):
     elif registro_status.HISTSTAT == "NM3":
         if caracteres_estranhos(conteudo_mensagem) or caracteres_numericos(conteudo_mensagem):
             return "Por favor, insira um nome válido!"
-        novo_contato = Hico(conteudo_mensagem, telefone, " ", False)
+        novo_contato = Hico(conteudo_mensagem, telefone, None, False)
         Hico.gravar_registro(novo_contato)
         registro_contato = Hico.pesquisar_registro(telefone)
         Hist.deletar_status(registro_status)

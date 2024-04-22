@@ -9,7 +9,7 @@ class Hico(db.Model):
     HICOMAIL = db.Column(db.String)
     HICOCLIE = db.Column(db.Boolean, unique=False, default=False)
 
-    def __init_(self, HICONOME, HICOFONE, HICOMAIL, HICOCLIE):
+    def __init__(self, HICONOME, HICOFONE, HICOMAIL, HICOCLIE):
         self.HICONOME = HICONOME
         self.HICOFONE = HICOFONE
         self.HICOMAIL = HICOMAIL
