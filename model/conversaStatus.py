@@ -4,7 +4,7 @@ from utils.db import db
 class Hist(db.Model):
     __tablename__ = 'hist'
     id = db.Column(db.Integer, primary_key=True)
-    HISTFONE = db.Column(db.String)
+    HISTFONE = db.Column(db.String, unique=True, nullable=False)
     HISTSTAT = db.Column(db.String)
     HISTTIME = db.Column(db.String)
 
