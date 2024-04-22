@@ -17,7 +17,6 @@ class Hist(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    @classmethod
     def deletar_status(self):
         db.session.delete(self)
         db.session.commit()

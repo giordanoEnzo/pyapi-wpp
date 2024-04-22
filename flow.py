@@ -27,7 +27,7 @@ def identifica_resposta(conteudo_mensagem, telefone):
         novo_contato = Hico(conteudo_mensagem, telefone, None, False)
         Hico.gravar_registro(novo_contato)
         registro_contato = Hico.pesquisar_registro(telefone)
-        Hist.deletar_status(registro_status)
+        registro_contato.Hist.deletar_status()
         return f"Prazer em te conhecer {registro_contato.HICONOME}!\n"
     else:
         return ("Não entendi!")
