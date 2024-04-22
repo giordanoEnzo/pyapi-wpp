@@ -5,5 +5,5 @@ def caracteres_numericos(conteudo_mensagem):
 
 
 def caracteres_estranhos(conteudo_mensagem):
-    caracteres_invalidos = [caractere for caractere in conteudo_mensagem if not (caractere.isalnum())]
+    caracteres_invalidos = [caractere for caractere in conteudo_mensagem if not (caractere.isalnum() or caractere.isspace())]
     return caracteres_invalidos
