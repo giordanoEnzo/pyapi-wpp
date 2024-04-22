@@ -5,7 +5,7 @@ class Hico(db.Model):
     __tablename__ = 'hico'
     id = db.Column(db.Integer, primary_key=True)
     HICONOME = db.Column(db.String)
-    HICOFONE = db.Column(db.String)
+    HICOFONE = db.Column(db.String, unique=True)
     HICOMAIL = db.Column(db.String)
     HICOCLIE = db.Column(db.Boolean, unique=False, default=False)
 
