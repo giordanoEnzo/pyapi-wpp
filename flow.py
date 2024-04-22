@@ -2,20 +2,24 @@ import requests
 from model import contato
 import termos
 from model.contato import Hico
-from utils.validacoes import validar_nome
+from model.conversaStatus import Hist
+import time
 
 
 def identifica_resposta(conteudo_mensagem, telefone):
-    if conteudo_mensagem in termos.saudacoes:
-        registro = Hico.pesquisar_registro(telefone)
+    registro_status = Hist.pesquisar_status(telefone)
 
-        if registro is not None:
-            return (f"Olá {registro.HICONOME}!\n"
+    if conteudo_mensagem in termos.saudacoes:
+        registro_contato = Hico.pesquisar_registro(telefone)
+
+        if registro_contato is not None:
+            return (f"Olá {registro_contato.HICONOME}!\n"
                     f"Seja bem-vindo novamente a central de atendimento da HareWare!")
         else:
+            Hist.gravar_status(telefone, "NM3", time.strftime("%H:%M"))
             return ("Olá! Seja bem-vindo a central de atendimento da HareWare!\n"
-                    "Por favor digite nome!")
-    elif validar_nome(conteudo_mensagem):
+                    "Por favor digite o seu nome...")
+    elif registro_status == "NM3":
         Hico.gravar_registro(conteudo_mensagem)
         registro = Hico.pesquisar_registro(telefone)
         return f"Prazer em te conhecer {registro.HICONOME}!\n"
