@@ -21,7 +21,7 @@ def identifica_resposta(conteudo_mensagem, telefone):
             Hist.gravar_status(novo_status)
             return ("Olá! Seja bem-vindo a central de atendimento da HareWare!\n"
                     "Por favor digite o seu nome...")
-    elif registro_status == "NM3":
+    elif registro_status.HISTSTAT == "NM3":
         if caracteres_estranhos(conteudo_mensagem) or caracteres_numericos(conteudo_mensagem):
             return "Por favor, insira um nome válido!"
         novo_contato = Hico(conteudo_mensagem, telefone, None, False)
