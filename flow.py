@@ -2,6 +2,7 @@ import requests
 from model import contato
 import termos
 from model.contato import Hico
+from utils.validacoes import validar_nome
 
 
 def identifica_resposta(conteudo_mensagem, telefone):
@@ -14,8 +15,12 @@ def identifica_resposta(conteudo_mensagem, telefone):
         else:
             return ("Olá! Seja bem-vindo a central de atendimento da HareWare!\n"
                     "Por favor digite nome!")
+    elif validar_nome(conteudo_mensagem):
+        Hico.gravar_registro(conteudo_mensagem)
+        registro = Hico.pesquisar_registro(telefone)
+        return f"Prazer em te conhecer {registro.HICONOME}!\n"
     else:
-        return "Não entendi!"
+        return ("Não entendi!")
 
 
 def responder(business_phone_number_id, GRAPH_API_TOKEN, remetente, id_mensagem_anterior, conteudo_mensagem):
