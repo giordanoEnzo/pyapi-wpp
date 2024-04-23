@@ -14,26 +14,53 @@ def identifica_resposta(conteudo_mensagem, telefone):
         registro_contato = Hico.pesquisar_registro(telefone)
 
         if registro_contato is not None:
+            novo_status = Hist(telefone, "TPS", datetime.now())
+            Hist.gravar_status(novo_status)
+
             return (f"Olá {registro_contato.HICONOME}!\n"
-                    f"Seja bem-vindo novamente a central de atendimento da HareWare!")
+                    f"Seja bem-vindo novamente a central de atendimento da HareWare!\n\n"
+                    f"Em que posso ajuda-lo? Digite o número correspondente ao serviço que procura:\n\n"
+                    f"1) Suporte técnico\n"
+                    f"2) Atendimento comercial\n")
         else:
             novo_status = Hist(telefone, "NM3", datetime.now())
             Hist.gravar_status(novo_status)
+
             return ("Olá! Seja bem-vindo a central de atendimento da HareWare!\n"
                     "Por favor digite o seu nome!")
     elif registro_status.HISTSTAT == "NM3":
+
         if caracteres_estranhos(conteudo_mensagem) or caracteres_numericos(conteudo_mensagem):
             return "Por favor, insira um nome válido!"
+
         novo_contato = Hico(conteudo_mensagem, telefone, None, False)
         Hico.gravar_registro(novo_contato)
         registro_contato = Hico.pesquisar_registro(telefone)
+
         registro_status.deletar_status()
-        return (f"Prazer em te conhecer {registro_contato.HICONOME}!\n"
+
+        novo_status = Hist(telefone, "TPS", datetime.now())
+        Hist.gravar_status(novo_status)
+
+        return (f"Prazer em te conhecer {registro_contato.HICONOME}!\n\n"
                 f"Como posso ajudar? Digite o número correspondente ao serviço que precisa:\n\n"
                 f"1) Suporte técnico\n"
-                f"2) Atendimento Cormercial\n")
+                f"2) Atendimento cormercial\n")
+    elif registro_status.HISTSTAT == "TPS":
+
+
+        if conteudo_mensagem == "1":
+            registro_status.deletar_status()
+
+            return "Você escolheu Suporte técnico"
+        elif conteudo_mensagem == "2":
+            registro_status.deletar_status()
+
+            return "Você escolheu Atendimento cormercial"
+        else:
+            return "Insira uma opção válida!"
     else:
-        return ("Não entendi!")
+        return "Não entendi!"
 
 
 def responder(business_phone_number_id, GRAPH_API_TOKEN, remetente, id_mensagem_anterior, conteudo_mensagem):
