@@ -21,7 +21,8 @@ def identifica_resposta(conteudo_mensagem, telefone):
                     f"Seja bem-vindo novamente a central de atendimento da HareWare!\n\n"
                     f"Em que posso ajuda-lo? Digite o número correspondente ao serviço que procura:\n\n"
                     f"1) Suporte técnico\n"
-                    f"2) Atendimento comercial\n")
+                    f"2) Atendimento comercial\n"
+                    f"3) Cancelar atendimento\n")
         else:
             novo_status = Hist(telefone, "NM3", datetime.now())
             Hist.gravar_status(novo_status)
@@ -45,7 +46,8 @@ def identifica_resposta(conteudo_mensagem, telefone):
         return (f"Prazer em te conhecer {registro_contato.HICONOME}!\n\n"
                 f"Como posso ajudar? Digite o número correspondente ao serviço que precisa:\n\n"
                 f"1) Suporte técnico\n"
-                f"2) Atendimento cormercial\n")
+                f"2) Atendimento cormercial\n"
+                f"3) Cancelar atendimento\n")
     elif registro_status.HISTSTAT == "TPS":
 
         if conteudo_mensagem == "1":
@@ -58,7 +60,8 @@ def identifica_resposta(conteudo_mensagem, telefone):
                     "Qual das soluções listadas abaixo você gostaria de receber assistência?\n\n"
                     "1) HareWeb - Desenvolvimento de sites\n"
                     "2) HareInteract - Chatbot multicanal\n"
-                    "3) HareCloud - Serviços em nuvem\n")
+                    "3) HareCloud - Serviços em nuvem\n"
+                    "4) Cancelar atendimento\n")
         elif conteudo_mensagem == "2":
             registro_status.deletar_status()
 
@@ -68,7 +71,11 @@ def identifica_resposta(conteudo_mensagem, telefone):
                     "Qual das soluções listadas abaixo você gostaria de explorar detalhadamente?\n\n"
                     "1) HareWeb - Desenvolvimento de sites\n"
                     "2) HareInteract - Chatbot multicanal\n"
-                    "3) HareCloud - Serviços em nuvem\n")
+                    "3) HareCloud - Serviços em nuvem\n"
+                    "4) Cancelar atendimento\n")
+        elif conteudo_mensagem == "3":
+            registro_status.deletar_status()
+            return ("Até breve!\n")
         else:
             return "Insira uma opção válida!"
     elif registro_status.HISTSTAT == "SIS":
@@ -85,6 +92,9 @@ def identifica_resposta(conteudo_mensagem, telefone):
             registro_status.deletar_status()
 
             return "HareCloud - Serviços em nuvem\n"
+        elif conteudo_mensagem == "4":
+            registro_status.deletar_status()
+            return "Até breve!"
         else:
             return "Insira uma opção válida!"
     elif registro_status.HISTSTAT == "CIS":
@@ -101,6 +111,9 @@ def identifica_resposta(conteudo_mensagem, telefone):
             registro_status.deletar_status()
 
             return "HareCloud - Serviços em nuvem\n"
+        elif conteudo_mensagem == "4":
+            registro_status.deletar_status()
+            return "Até breve"
         else:
             return "Insira uma opção válida!\n"
     else:
