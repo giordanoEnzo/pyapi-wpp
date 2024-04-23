@@ -63,6 +63,7 @@ def identifica_resposta(conteudo_mensagem, telefone):
             registro_status.deletar_status()
 
             novo_status = Hist(telefone, "CIS", datetime.now())
+            Hist.gravar_status(novo_status)
             return ("Excelente! você optou pelo Atendimento comercial!\n\n"
                     "Qual das soluções listadas abaixo você gostaria de explorar detalhadamente?\n\n"
                     "1) HareWeb - Desenvolvimento de sites\n"
