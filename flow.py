@@ -48,15 +48,58 @@ def identifica_resposta(conteudo_mensagem, telefone):
                 f"2) Atendimento cormercial\n")
     elif registro_status.HISTSTAT == "TPS":
 
+        if conteudo_mensagem == "1":
+            registro_status.deletar_status()
+
+            novo_status = Hist(telefone, "SIS", datetime.now())
+            Hist.gravar_status(novo_status)
+
+            return ("Ótimo! você optou pelo suporte técnico!\n\n"
+                    "Qual das soluções listadas abaixo você gostaria de receber assistência?\n\n"
+                    "1) HareWeb - Desenvolvimento de sites\n"
+                    "2) HareInteract - Chatbot multicanal\n"
+                    "3) HareCloud - Serviços em nuvem\n")
+        elif conteudo_mensagem == "2":
+            registro_status.deletar_status()
+
+            novo_status = Hist(telefone, "CIS", datetime.now())
+            return ("Excelente! você optou pelo Atendimento comercial!\n\n"
+                    "Qual das soluções listadas abaixo você gostaria de explorar detalhadamente?\n\n"
+                    "1) HareWeb - Desenvolvimento de sites\n"
+                    "2) HareInteract - Chatbot multicanal\n"
+                    "3) HareCloud - Serviços em nuvem\n")
+        else:
+            return "Insira uma opção válida!"
+    elif registro_status.HISTSTAT == "SIS":
 
         if conteudo_mensagem == "1":
             registro_status.deletar_status()
 
-            return "Você escolheu Suporte técnico"
+            return "HareWeb - Desenvolvimento de sites"
         elif conteudo_mensagem == "2":
             registro_status.deletar_status()
 
-            return "Você escolheu Atendimento cormercial"
+            return "HareInteract - Chatbot multicanal"
+        elif conteudo_mensagem == "3":
+            registro_status.deletar_status()
+
+            return "HareCloud - Serviços em nuvem\n"
+        else:
+            return "Insira uma opção válida!"
+    elif registro_status.HISTSTAT == "CIS":
+
+        if conteudo_mensagem == "1":
+            registro_status.deletar_status()
+
+            return "HareWeb - Desenvolvimento de sites"
+        elif conteudo_mensagem == "2":
+            registro_status.deletar_status()
+
+            return "HareInteract - Chatbot multicanal"
+        elif conteudo_mensagem == "3":
+            registro_status.deletar_status()
+
+            return "HareCloud - Serviços em nuvem\n"
         else:
             return "Insira uma opção válida!"
     else:
