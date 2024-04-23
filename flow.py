@@ -75,11 +75,11 @@ def identifica_resposta(conteudo_mensagem, telefone):
         if conteudo_mensagem == "1":
             registro_status.deletar_status()
 
-            return "HareWeb - Desenvolvimento de sites"
+            return "HareWeb - Desenvolvimento de sites\n"
         elif conteudo_mensagem == "2":
             registro_status.deletar_status()
 
-            return "HareInteract - Chatbot multicanal"
+            return "HareInteract - Chatbot multicanal\n"
         elif conteudo_mensagem == "3":
             registro_status.deletar_status()
 
@@ -91,19 +91,19 @@ def identifica_resposta(conteudo_mensagem, telefone):
         if conteudo_mensagem == "1":
             registro_status.deletar_status()
 
-            return "HareWeb - Desenvolvimento de sites"
+            return "HareWeb - Desenvolvimento de sites\n"
         elif conteudo_mensagem == "2":
             registro_status.deletar_status()
 
-            return "HareInteract - Chatbot multicanal"
+            return "HareInteract - Chatbot multicanal\n"
         elif conteudo_mensagem == "3":
             registro_status.deletar_status()
 
             return "HareCloud - Serviços em nuvem\n"
         else:
-            return "Insira uma opção válida!"
+            return "Insira uma opção válida!\n"
     else:
-        return "Não entendi!"
+        return "Não entendi!\n"
 
 
 def responder(business_phone_number_id, GRAPH_API_TOKEN, remetente, id_mensagem_anterior, conteudo_mensagem):
