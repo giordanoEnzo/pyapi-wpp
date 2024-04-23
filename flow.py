@@ -28,7 +28,10 @@ def identifica_resposta(conteudo_mensagem, telefone):
         Hico.gravar_registro(novo_contato)
         registro_contato = Hico.pesquisar_registro(telefone)
         registro_status.deletar_status()
-        return f"Prazer em te conhecer {registro_contato.HICONOME}!\n"
+        return (f"Prazer em te conhecer {registro_contato.HICONOME}!\n"
+                f"Como posso ajudar? Digite o número correspondente ao serviço que precisa:\n\n"
+                f"1) Suporte técnico\n"
+                f"2) Atendimento Cormercial\n")
     else:
         return ("Não entendi!")
 
