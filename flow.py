@@ -1,8 +1,8 @@
 import requests
-from model import contato, conversaStatus
+from model import modelContato, modelConversaStatus
 import termos
-from model.contato import Hico
-from model.conversaStatus import Hist
+from model.modelContato import Hico
+from model.modelConversaStatus import Hist
 from datetime import datetime
 from utils.validacoes import caracteres_numericos, caracteres_estranhos
 

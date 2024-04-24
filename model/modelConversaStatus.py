@@ -1,4 +1,4 @@
-from utils.db import db
+from HareInteract.utils.db import db
 
 
 class Hist(db.Model):
