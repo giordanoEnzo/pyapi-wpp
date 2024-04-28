@@ -1,12 +1,12 @@
 import json
 from flask import Flask, request, jsonify
 import requests
-from utils.db import db
+from Utils.db import db
 import flow
 
 # Obtém variáveis de ambiente
 WEBHOOK_VERIFY_TOKEN = "zuck_seu_merda"
-GRAPH_API_TOKEN = "EAALU15sZAfHoBO0hBNOPCM7t792HZBOZALLbVeMwtJREMFQMuFJQYUA3FNXVrgnF52myEPDc4ZCTwKeqaUWLvbETql2TbGKf4FiW9UpUC5IJTo23zSdSZCGNs3YksQheZA4uaOeAbWfaPrWAOdotxPefXJJ1486E0o9bZAZBTzDVyT2GSe9wZAiXWUg7qTNJhjYciZB6fSjvOxKkUoEoY2OflpiXgeYAGh"
+GRAPH_API_TOKEN = "EAALU15sZAfHoBO7ikZAA6pcveMfh9W9limPYc1Bd8pq8M7vl5jn9MoompGVIWGxqHXkFPgNg2XhufTFkuD1zq9cGM6ZCrNV2aM0OsLT2B4nZAdkEoeStIuPGrKckY7XL24HYjOjomd52B8ApllsISH4gYGpvaZCuXHCseQnoNwZCb9RKc3tR4q72x9gQZAZAiBv4Jhu8lI33O8UvKN3anlN9kPYSQOgZD"
 PORT = "5000"
 
 app = Flask(__name__)

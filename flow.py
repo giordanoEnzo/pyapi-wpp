@@ -4,7 +4,7 @@ import termos
 from model.modelContato import Hico
 from model.modelConversaStatus import Hist
 from datetime import datetime
-from utils.validacoes import caracteres_numericos, caracteres_estranhos
+from Utils.validacoes import caracteres_numericos, caracteres_estranhos
 
 
 def identifica_resposta(conteudo_mensagem, telefone):

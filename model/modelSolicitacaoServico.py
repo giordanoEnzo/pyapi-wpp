@@ -1,4 +1,4 @@
-from HareInteract.utils.db import db
+from HareInteract.Utils.db import db
 
 
 class Hiss(db.Model):

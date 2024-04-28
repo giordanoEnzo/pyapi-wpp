@@ -1,5 +1,4 @@
-from utils.db import db
-
+from HareInteract.Utils.db import db
 
 class Hico(db.Model):
     __tablename__ = 'hico'
